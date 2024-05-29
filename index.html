@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Catalog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Movie Catalog</h1>
+        <nav>
+            <input type="text" id="search-input" placeholder="Search movies">
+            <select id="genre-filter">
+                <option value="">All Genres</option>
+                <!-- Populate genre options dynamically -->
+            </select>
+            <button onclick="searchMovies()">Search</button>
+        </nav>
+    </header>
+    <section id="movie-grid">
+        <!-- Movie posters will be dynamically generated here -->
+    </section>
+    <footer>
+        <p>&copy; 2024 Movie Catalog</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
