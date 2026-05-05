@@ -93,3 +93,45 @@ if (returnToFlightInfo) {
           }
         } else {
           // Return to search overlay (shows search results)
+
+
+
+    //
+
+
+    let cameFromFlightInfo = false; // Track if user navigated from the Flight Info overlay
+
+/**
+ * Return to the Flight Info overlay on mobile.
+ * Replicates the exact same flow as clicking the Flight Info tile.
+ */
+function returnToFlightInfoOverlay() {
+  const category = window.selectedFlightCategory || "Departure";
+
+  // 1. Render the flight grid into contentContainer
+  renderFlightContent(category);
+
+  // 2. Collapse sidebar beneath the overlay
+  const servicesSidebar = document.getElementById("servicesSidebar");
+  if (servicesSidebar) {
+    servicesSidebar.classList.add("collapsed");
+    servicesSidebar.classList.remove("expanded", "fromSearch", "show");
+    servicesSidebar.style.transform = "translateY(80dvh)";
+    const handle = document.getElementById("bottomSheetHandle");
+    if (handle) {
+      handle.classList.add("up-btn");
+      handle.classList.remove("down-btn");
+    }
+  }
+
+  // 3. Open the search overlay - it will detect .flight-grid and show flight content
+  showSearchOverlay("");
+}
+if (isMobile && cameFromFlightInfo) {
+        // User entered from Flight Info overlay — return there
+        cameFromOverlaySearch = false;
+        cameFromFlightInfo = false;
+        returnToFlightInfoOverlay();
+        return;
+      }
+
