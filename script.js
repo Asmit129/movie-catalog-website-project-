@@ -28,6 +28,25 @@ function loadMovies() {
             window.location.href = `movie.html?title=${encodeURIComponent(movie.title)}`;
         });
 
+
+         if (isMobile && renderSearchInOverlay) {
+          cameFromOverlaySearch = true;
+          hideSearchOverlay(false, false);
+          renderSearchInOverlay = false;
+
+          const servicesSidebar = document.getElementById("servicesSidebar");
+          if (servicesSidebar) {
+            servicesSidebar.classList.remove("collapsed");
+            servicesSidebar.classList.add("expanded");
+            servicesSidebar.style.transform = "translateY(0vh)";
+
+            const handle = document.getElementById("bottomSheetHandle");
+            if (handle) {
+              handle.classList.remove("up-btn");
+              handle.classList.add("down-btn");
+            }
+          }
+        }
         movieGrid.appendChild(movieElement);
     });
 }
